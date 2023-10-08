@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+}
+
+.product-card-image{
+  width: 100%;
+}
+.product-list{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+.product-card-container{
+
+  display: flex;
+  
+  flex-basis: 25%
+}
+.product-link{
+  display: flex;
+  flex-direction: column;
+}
+.product-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-detail-left{
+  display: flex;
+  flex-direction: row;
+  flex-basis: 50%;
+  
+}
+.product-detail-right{
+  display: flex;
+  flex-direction: row;
+  flex-basis: 50%;
+  
+}
+.product-detail-images{
+  flex-direction: column;
+}
+.product-detail-image{
+  width: 50%;
+}
+.product-info{
+  flex-direction: column;
+  
+}
+.product-info>*{
+  width: 100%;
+}
+.cart-product-image{
+  width: 120px;
+}
