@@ -52,3 +52,39 @@
 .cart-product-image{
   width: 120px;
 }
+.cart-item{
+  display: flex;
+  margin: 20px;
+}
+.cart-item>*{
+  margin: auto;
+}
+
+.cart-update{
+  left: 0;
+  
+}
+.cart-item-left{
+  display: flex ;
+}
+.cart-total{
+  display: flex;
+}
+.cart-total>*{
+margin: auto;
+
+}
+.cart-total-container{
+  
+}
+.cart-total-container>*{
+  
+  margin: auto;
+}
+.to-checkout-button-container{
+  display:flex
+}
+.to-checkout-button{
+  margin: auto;
+  margin-top: 20px;
+}
