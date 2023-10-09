@@ -9,13 +9,11 @@ export default function PaymentReturnPage({ errorHandler }) {
     OrderInProcessContext
   );
   const [orderStatus, setOrderStatus] = useState("pending");
-  console.log(orderContext);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchApi(`http://localhost:5000/api/checkout/status/${orderContext.id}`)
         .then((res) => {
-          console.log(res);
           if (res.order_status === "closed") {
             setOrderStatus(res.payment_status);
             deleteCookie("orderInProcess");
@@ -31,7 +29,6 @@ export default function PaymentReturnPage({ errorHandler }) {
         totalQuantity += product.OrderDetail.quantity;
         return (
           <div className="cart-item">
-            {console.log(product.ProductImages[0])}
             <div className="cart-item-left">
               <img
                 className="cart-product-image"

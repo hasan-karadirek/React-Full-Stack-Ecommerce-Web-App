@@ -8,12 +8,10 @@ export default function useApiFetch(url, option, errorHandler) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(url);
     const promises = urlArr.map((url) => fetchApi(url, option));
 
     Promise.all(promises)
       .then((res) => {
-        console.log(res);
         setResult(res[0]);
         setLoading(false);
       })

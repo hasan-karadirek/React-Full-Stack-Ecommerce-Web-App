@@ -6,14 +6,13 @@ import { Link } from "react-router-dom";
 
 export default function CartPage({ errorHandler }) {
   const { orderContext, handleOrderContext } = useContext(OrderContext);
-  console.log(orderContext, "sds");
+
   let totalQuantity = 0;
   const cartItems = orderContext
     ? orderContext.Products.map((product) => {
         totalQuantity += product.OrderDetail.quantity;
         return (
           <div className="cart-item">
-            {console.log(product.ProductImages[0])}
             <div className="cart-item-left">
               <img
                 className="cart-product-image"

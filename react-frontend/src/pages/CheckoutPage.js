@@ -5,7 +5,7 @@ import { getCookie } from "../helpers/cookiesHelpers";
 
 export default function CheckoutPage({ errorHandler }) {
   const order = getCookie("order") ? JSON.parse(getCookie("order")) : null;
-  console.log(order);
+
   return order ? (
     order.order_total !== 0 ? (
       <div>

@@ -30,7 +30,6 @@ export function updateCart(
   };
   fetchApi(fetchUrl, options)
     .then((res) => {
-      console.log(JSON.stringify(res.order));
       setCookie("order", JSON.stringify(res.order));
       handleOrderContext();
     })
