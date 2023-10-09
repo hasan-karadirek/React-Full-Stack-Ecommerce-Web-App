@@ -1,19 +1,24 @@
 import { getCookie, setCookie } from "./cookiesHelpers";
 import { fetchApi } from "./fetchHelper";
 
-export function updateCart(productId, handleOrderContext, action) {
+export function updateCart(
+  productId,
+  handleOrderContext,
+  action,
+  errorHandler
+) {
   let guestCustomerId = getCookie("guestCustomerId");
   const fetchUrl = `http://localhost:5000/api/cart/${action}`;
 
   if (!guestCustomerId) {
-    guestCustomerId = Date.now();
+    guestCustomerId = JSON.stringify(Date.now()).slice(-9);
     setCookie("guestCustomerId", guestCustomerId);
   }
 
   const body = {
     productId: parseInt(productId),
     quantity: 1,
-    guestCustomerId: parseInt(guestCustomerId.slice(-9)),
+    guestCustomerId: parseInt(guestCustomerId),
   };
 
   const options = {
@@ -28,5 +33,5 @@ export function updateCart(productId, handleOrderContext, action) {
       setCookie("order", JSON.stringify(res.order));
       handleOrderContext();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => errorHandler(err));
 }

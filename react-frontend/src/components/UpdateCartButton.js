@@ -7,12 +7,13 @@ export default function UpdateCartButton({
   handleOrderContext,
   action,
   textContent,
+  errorHandler,
 }) {
   const button = (
     <button
       id={productId}
       onClick={(e) => {
-        updateCart(e.target.id, handleOrderContext, action);
+        updateCart(e.target.id, handleOrderContext, action, errorHandler);
       }}
     >
       {textContent}

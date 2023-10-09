@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function ProductList({ categorySlug }) {
   const url = categorySlug
-    ? `http://localhost:5000/api/category/${categorySlug}`
+    ? `http://localhost:5000/api/category/${categorySlug}?limit=20`
     : "";
   const options = { method: "GET" };
   const [products, loading] = useApiFetch(url, options);
@@ -29,7 +29,7 @@ export default function ProductList({ categorySlug }) {
   return (
     <>
       {loading ? (
-        <h1>loading</h1>
+        <p>loading</p>
       ) : (
         <ul className="product-list">{productList}</ul>
       )}

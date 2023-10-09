@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import { getCookie } from "../helpers/cookiesHelpers";
-const order = JSON.parse(getCookie("order"));
+const cookieOrder = getCookie("order");
+const order = cookieOrder ? JSON.parse(cookieOrder) : "";
 export const OrderContext = createContext(order);
 
 export function useOrderContext() {
@@ -8,6 +9,7 @@ export function useOrderContext() {
 
   const handleOrderContext = () => {
     const order = JSON.parse(getCookie("order"));
+
     setOrderContext(order);
   };
   return { orderContext, handleOrderContext };
