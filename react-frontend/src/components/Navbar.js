@@ -17,5 +17,5 @@ export default function Navbar() {
       })
     : [];
 
-  return loading ? <p>loading</p> : <ul>{categoryList}</ul>;
+  return loading ? <p>loading</p> : <ul className="Navbar">{categoryList}</ul>;
 }
