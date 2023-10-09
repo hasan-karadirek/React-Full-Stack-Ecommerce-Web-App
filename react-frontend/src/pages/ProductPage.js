@@ -4,14 +4,14 @@ import useApiFetch from "../hooks/useApiFetch";
 import { OrderContext } from "../contexts/OrderContext";
 import UpdateCartButton from "../components/UpdateCartButton";
 
-export default function ProductPage() {
+export default function ProductPage({ errorHandler }) {
   const { orderContext, handleOrderContext } = useContext(OrderContext);
   const { productSlug } = useParams();
   const url = productSlug
     ? `http://localhost:5000/api/products/${productSlug}`
     : "";
 
-  const [result, loading] = useApiFetch(url);
+  const [result, loading] = useApiFetch(url, null, errorHandler);
 
   const productImages = result.product ? (
     result.product.ProductImages.map((image) => {
@@ -49,6 +49,7 @@ export default function ProductPage() {
             productId={result.product.id}
             action="add"
             textContent="Add To Cart"
+            errorHandler={errorHandler}
           />
           <div className="product-detail-desc">
             <h2>Description</h2>

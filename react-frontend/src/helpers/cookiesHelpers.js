@@ -11,6 +11,6 @@ export const getCookie = (name) => {
 };
 
 // Function to delete a cookie
-export const deleteCookie = () => {
-  Cookies.remove("myCookieName");
+export const deleteCookie = (name) => {
+  Cookies.remove(name);
 };

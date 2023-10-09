@@ -4,7 +4,7 @@ import { OrderContext } from "../contexts/OrderContext";
 import UpdateCartButton from "../components/UpdateCartButton";
 import { Link } from "react-router-dom";
 
-export default function CartPage() {
+export default function CartPage({ errorHandler }) {
   const { orderContext, handleOrderContext } = useContext(OrderContext);
   console.log(orderContext, "sds");
   let totalQuantity = 0;
@@ -27,14 +27,15 @@ export default function CartPage() {
 
                 <UpdateCartButton
                   handleOrderContext={handleOrderContext}
-                  productId={258}
+                  productId={product.id}
                   action="remove"
                   textContent="-"
+                  errorHandler={errorHandler}
                 />
                 <span>{product.OrderDetail.quantity}</span>
                 <UpdateCartButton
                   handleOrderContext={handleOrderContext}
-                  productId={258}
+                  productId={product.id}
                   action="add"
                   textContent="+"
                 />
@@ -48,7 +49,11 @@ export default function CartPage() {
 
   return orderContext ? (
     <div className="cart-items">
-      {cartItems}
+      {cartItems.length === 0 ? (
+        <div className="cart-item">No product in the cart.</div>
+      ) : (
+        cartItems
+      )}
       <div className="cart-total-container">
         <div className="cart-total">
           <span>Subtotal({`${totalQuantity} products`})</span>
@@ -62,6 +67,8 @@ export default function CartPage() {
       </div>
     </div>
   ) : (
-    <p>loading</p>
+    <div className="cart-items">
+      <div className="cart-item">no product in the cart</div>
+    </div>
   );
 }
