@@ -24,98 +24,118 @@ function CheckoutAddressForm({ errorHandler }) {
   };
 
   return (
-    <div>
+    <div className="checkout-form-container">
       <h1>Checkout Address</h1>
       <form id={"checkout-form"} onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="firstName">First Name:</label>
+          <div className="input-field">
+            <label htmlFor="firstName">First Name:</label>
+            <br />
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-field">
+            <label htmlFor="lastName">Lastname:</label>
+            <br />
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
+        <br />
+        <div className="input-field">
+          <label htmlFor="email">Email:</label>
+          <br />
           <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-
-          <label htmlFor="lastName">Lastname:</label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
             required
           />
         </div>
-        <br />
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <br />
-
-        <label htmlFor="postcode">Postcode:</label>
-        <input
-          type="text"
-          id="postcode"
-          name="postcode"
-          value={formData.postcode}
-          onChange={handleChange}
-          required
-        />
-        <br />
-
-        <label htmlFor="street_name">Street Name:</label>
-        <input
-          type="text"
-          id="street_name"
-          name="street_name"
-          value={formData.street_name}
-          onChange={handleChange}
-          required
-        />
         <br />
         <div className="form-group">
-          <label htmlFor="house_number">House Number:</label>
-          <input
-            type="number"
-            id="house_number"
-            name="house_number"
-            value={formData.house_number}
-            onChange={handleChange}
-            required
-          />
-
-          <label htmlFor="floor">Floor:</label>
-          <div className=""></div>
-          <input
-            type="text"
-            id="floor"
-            name="floor"
-            value={formData.floor}
-            onChange={handleChange}
-            required
-          />
+          <div className="input-field">
+            <label htmlFor="postcode">Postcode:</label>
+            <br />
+            <input
+              type="text"
+              id="postcode"
+              name="postcode"
+              value={formData.postcode}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-field">
+            <label htmlFor="street_name">Street Name:</label>
+            <br />
+            <input
+              type="text"
+              id="street_name"
+              name="street_name"
+              value={formData.street_name}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
         <br />
-        <label htmlFor="country">Country:</label>
-        <input
-          type="text"
-          id="country"
-          name="country"
-          value={formData.country}
-          onChange={handleChange}
-          required
-        />
+        <div className="form-group">
+          <div className="input-field">
+            <label htmlFor="house_number">House Number:</label>
+            <br />
+            <input
+              type="number"
+              id="house_number"
+              name="house_number"
+              value={formData.house_number}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-field">
+            <label htmlFor="floor">Floor:</label>
+            <br />
+            <input
+              type="text"
+              id="floor"
+              name="floor"
+              value={formData.floor}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
         <br />
+        <div className="input-field">
+          <label htmlFor="country">Country:</label>
+          <br />
+          <input
+            type="text"
+            id="country"
+            name="country"
+            value={formData.country}
+            onChange={handleChange}
+            required
+          />
+          <br />
+        </div>
 
-        <input type="submit" value="Submit" />
+        <input class="go-to-payment" type="submit" value="Go To Payment" />
       </form>
     </div>
   );

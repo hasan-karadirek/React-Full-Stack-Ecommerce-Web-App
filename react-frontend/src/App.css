@@ -165,6 +165,32 @@ margin: auto;
   display: flex;
 }
 
+
+.checkout-form-container>*{
+  margin-left: 40vw;
+  
+}
+
+.input-field>input{
+  width: 20vw;
+    height: 30px;
+}
+.input-field>#email,#country{
+  width: 40vw;
+}
+.go-to-payment{
+  width: 40vw;
+  margin-top: 20px;
+  font-size: 25px;
+  background-color: #58ba54;
+  border: none;
+}
+.go-to-payment:hover{
+  background-color: #4a9e47;
+}
+
+
+
 .navbar-items{
   list-style: none;
   display: flex;
