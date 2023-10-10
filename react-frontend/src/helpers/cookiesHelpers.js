@@ -1,4 +1,4 @@
-import Cookies from "js-cookie";
+import * as Cookies from "js-cookie";
 
 export const setCookie = (cookieName, CookieValue) => {
   Cookies.set(cookieName, CookieValue, { expires: 7 }); // Expires in 7 days
