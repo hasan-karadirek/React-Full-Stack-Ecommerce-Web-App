@@ -9,21 +9,24 @@ import PaymentReturnPage from "./pages/PaymentReturnPage";
 import { OrderInProcessContextProvider } from "./contexts/OrderInProcessContext";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
+import { CategoryContextProvider } from "./contexts/CategoryContext";
 
 function App() {
   const [apiError, setApiError] = useState();
   const errorHandler = (err) => setApiError(err);
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route
           path="/category/:categorySlug"
           element={
             !apiError ? (
-              <OrderContextProvider>
-                <CategoryPage errorHandler={errorHandler} />
-              </OrderContextProvider>
+              <CategoryContextProvider>
+                <OrderContextProvider>
+                  <Navbar />
+                  <CategoryPage errorHandler={errorHandler} />
+                </OrderContextProvider>
+              </CategoryContextProvider>
             ) : (
               <div>Something went wrong Error:{apiError.message} </div>
             )
@@ -33,9 +36,13 @@ function App() {
           path="/product/:productSlug"
           element={
             !apiError ? (
-              <OrderContextProvider>
-                <ProductPage errorHandler={errorHandler} />
-              </OrderContextProvider>
+              <CategoryContextProvider>
+                <OrderContextProvider>
+                  <Navbar />
+
+                  <ProductPage errorHandler={errorHandler} />
+                </OrderContextProvider>
+              </CategoryContextProvider>
             ) : (
               <div>Something went wrong Error:{apiError.message} </div>
             )
@@ -45,9 +52,13 @@ function App() {
           path="/cart"
           element={
             !apiError ? (
-              <OrderContextProvider>
-                <CartPage errorHandler={errorHandler} />
-              </OrderContextProvider>
+              <CategoryContextProvider>
+                <OrderContextProvider>
+                  <Navbar />
+
+                  <CartPage errorHandler={errorHandler} />
+                </OrderContextProvider>
+              </CategoryContextProvider>
             ) : (
               <div>Something went wrong Error:{apiError.message} </div>
             )
@@ -57,9 +68,13 @@ function App() {
           path="/checkout"
           element={
             !apiError ? (
-              <OrderContextProvider>
-                <CheckoutPage errorHandler={errorHandler} />
-              </OrderContextProvider>
+              <CategoryContextProvider>
+                <OrderContextProvider>
+                  <Navbar />
+
+                  <CheckoutPage errorHandler={errorHandler} />
+                </OrderContextProvider>
+              </CategoryContextProvider>
             ) : (
               <div>Something went wrong Error:{apiError.message} </div>
             )
@@ -69,9 +84,13 @@ function App() {
           path="/checkout/return"
           element={
             !apiError ? (
-              <OrderInProcessContextProvider>
-                <PaymentReturnPage errorHandler={errorHandler} />
-              </OrderInProcessContextProvider>
+              <CategoryContextProvider>
+                <OrderInProcessContextProvider>
+                  <Navbar />
+
+                  <PaymentReturnPage errorHandler={errorHandler} />
+                </OrderInProcessContextProvider>
+              </CategoryContextProvider>
             ) : (
               <div>Something went wrong Error:{apiError.message} </div>
             )

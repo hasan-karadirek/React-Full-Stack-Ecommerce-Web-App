@@ -11,6 +11,7 @@ export default function UpdateCartButton({
 }) {
   const button = (
     <button
+      className="add-to-cart-button"
       id={productId}
       onClick={(e) => {
         updateCart(e.target.id, handleOrderContext, action, errorHandler);
