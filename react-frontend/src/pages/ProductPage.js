@@ -34,29 +34,31 @@ export default function ProductPage({ errorHandler }) {
   return loading ? (
     <p>loading</p>
   ) : (
-    <div className="product-container">
-      <Link to="/cart">cart</Link>
-      <div className="product-detail-left">
-        <div className="product-detail-images">{productImages}</div>
-      </div>
-      <div className="product-detail-right">
-        <div className="product-info">
-          <h1>{result.product.name}</h1>
-          <span>{result.product.price}$</span>
-          <br></br>
-          <UpdateCartButton
-            handleOrderContext={handleOrderContext}
-            productId={result.product.id}
-            action="add"
-            textContent="Add To Cart"
-            errorHandler={errorHandler}
-          />
-          <div className="product-detail-desc">
-            <h2>Description</h2>
-            <p>{result.product.description}</p>
+    <>
+      <div className="navbar-space"></div>
+      <div className="product-container">
+        <div className="product-detail-left">
+          <div className="product-detail-images">{productImages}</div>
+        </div>
+        <div className="product-detail-right">
+          <div className="product-info">
+            <h1>{result.product.name}</h1>
+            <span>{result.product.price}$</span>
+            <br></br>
+            <UpdateCartButton
+              handleOrderContext={handleOrderContext}
+              productId={result.product.id}
+              action="add"
+              textContent="Add To Cart"
+              errorHandler={errorHandler}
+            />
+            <div className="product-detail-desc">
+              <h2>Description</h2>
+              <p>{result.product.description}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -8,19 +8,37 @@
 .product-list{
   display: flex;
   flex-wrap: wrap;
+  border-collapse: collapse;
   
 }
 .product-card-container{
-
+  border: 1px solid #ccc;
+  position: relative;
   display: flex;
+  flex-basis: 24%
+}
+.product-card-add-to-cart{
+  background-color: green;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  border: none;
   
-  flex-basis: 25%
 }
 .product-link{
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: black;
+}
+.product-link>*{
+  padding: 5px;
 }
 .product-container{
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -74,9 +92,7 @@
 margin: auto;
 
 }
-.cart-total-container{
-  
-}
+
 .cart-total-container>*{
   
   margin: auto;
@@ -91,4 +107,87 @@ margin: auto;
 
 .form-group{
   display: flex;
+}
+
+.navbar-items{
+  list-style: none;
+  display: flex;
+  position: relative;
+  
+}
+.navbar-item{
+  margin: auto;
+  padding: 15px;
+  
+}
+.navbar-link{
+  text-decoration: none;
+  color: black;
+}
+.navbar-items-left{
+  background-color: #d9d9d9;
+  position: fixed;
+  display: flex;
+}
+.navbar-items-right{
+  width: 20vw;
+  height: 6.8vh;
+  background-color: #d9d9d9;
+  position: fixed;
+  right: 15px;
+  
+}
+.navbar-cart-button{
+  text-decoration: none;
+  color: black;
+  padding-bottom: 0px;
+}
+.cart-quantity{
+  position: absolute;
+  font-size: 15px;
+  color: black;
+  font-weight: bold;
+  
+}
+.search-input{
+  left: 50px;
+  border-style: none;
+  height: 6.8vh;
+  position: absolute;
+  top:0px;
+  width: 100%;
+  background-color: #d9d9d9;
+}
+.cart-button{
+  background-color: #d9d9d9;
+  height: 100%;
+  width: 50px;
+}
+.hidden{
+  display: none;
+}
+.category-page-header{
+  display: flex;
+  margin-top: -3%;
+}
+.category-page-header-left, .category-page-header-right{
+  flex-basis: 50%;
+}
+.category-page-header-left{
+  background-color: #f194b5;
+}
+.category-page-header-left>h1{
+  margin-top:25vh;
+}
+.category-page-header-left>*{
+  margin-left:20px;
+  padding: 5px;
+}
+.category-page-header-image{
+  width: 100%;
+  height: 100%;
+}
+.navbar-space{
+  height: 75px;
+  border-bottom: 1px solid #d9d9d9;
 }

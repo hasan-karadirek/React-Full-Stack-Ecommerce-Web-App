@@ -24,7 +24,7 @@ export function updateCart(
   const options = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json", // Set content type to JSON
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
   };

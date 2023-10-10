@@ -37,6 +37,7 @@ export default function CartPage({ errorHandler }) {
                   productId={product.id}
                   action="add"
                   textContent="+"
+                  errorHandler={errorHandler}
                 />
               </div>
             </div>
