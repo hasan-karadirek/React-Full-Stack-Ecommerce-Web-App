@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { OrderContext } from "../contexts/OrderContext";
 import UpdateCartButton from "../components/UpdateCartButton";
 import { Link } from "react-router-dom";
+import { apiServer } from "../environmentVariables";
 
 export default function CartPage({ errorHandler }) {
   const { orderContext, handleOrderContext } = useContext(OrderContext);
@@ -16,7 +17,7 @@ export default function CartPage({ errorHandler }) {
             <div className="cart-item-left">
               <img
                 className="cart-product-image"
-                src={`http://localhost:5000/api/productImages/${
+                src={`${apiServer}/api/productImages/${
                   product.ProductImages[0].path.split("/")[3]
                 }`}
                 alt={product.name}
@@ -66,13 +67,6 @@ export default function CartPage({ errorHandler }) {
           >
             Address
           </p>
-          <p
-            className={
-              window.location.pathname === "/payment" ? "cart-nav-active" : ""
-            }
-          >
-            Payment
-          </p>
         </div>
         <div className="cart-items">
           {cartItems.length === 0 ? (
@@ -96,6 +90,7 @@ export default function CartPage({ errorHandler }) {
     </>
   ) : (
     <div className="cart-items">
+      <div className="navbar-space"></div>
       <div className="cart-item">no product in the cart</div>
     </div>
   );

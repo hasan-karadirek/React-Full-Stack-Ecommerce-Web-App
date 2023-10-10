@@ -44,6 +44,9 @@ export default function CheckoutPage({ errorHandler }) {
       </>
     )
   ) : (
-    <div>Your cart is empty</div>
+    <>
+      <div className="navbar-space"></div>
+      <div>Your cart is empty</div>
+    </>
   );
 }

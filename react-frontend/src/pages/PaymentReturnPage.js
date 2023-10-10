@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { deleteCookie, getCookie, setCookie } from "../helpers/cookiesHelpers";
-import { OrderContext } from "../contexts/OrderContext";
+import { deleteCookie } from "../helpers/cookiesHelpers";
 import { fetchApi } from "../helpers/fetchHelper";
 import { OrderInProcessContext } from "../contexts/OrderInProcessContext";
 import loadingBar from "../assets/loading-svgrepo-com.svg";
+import { apiServer } from "../environmentVariables";
 
 export default function PaymentReturnPage({ errorHandler }) {
   const { orderContext, handleOrderContext } = useContext(
@@ -13,7 +13,7 @@ export default function PaymentReturnPage({ errorHandler }) {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      fetchApi(`http://localhost:5000/api/checkout/status/${orderContext.id}`)
+      fetchApi(`${apiServer}/api/checkout/status/${orderContext.id}`)
         .then((res) => {
           if (res.order_status === "closed") {
             setOrderStatus(res.payment_status);
@@ -33,7 +33,7 @@ export default function PaymentReturnPage({ errorHandler }) {
             <div className="cart-item-left">
               <img
                 className="cart-product-image"
-                src={`http://localhost:5000/api/productImages/${
+                src={`${apiServer}/api/productImages/${
                   product.ProductImages[0].path.split("/")[3]
                 }`}
                 alt={product.name}

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import useApiFetch from "../hooks/useApiFetch";
 import { Link } from "react-router-dom";
 import cartIcon from "../assets/cart.svg";

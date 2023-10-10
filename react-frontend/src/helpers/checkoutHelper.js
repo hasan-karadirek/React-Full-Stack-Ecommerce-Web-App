@@ -1,4 +1,4 @@
-import { OrderInProcessContext } from "../contexts/OrderInProcessContext";
+import { apiServer, frontEndDomain } from "../environmentVariables";
 import { deleteCookie, getCookie, setCookie } from "./cookiesHelpers";
 import { fetchApi } from "./fetchHelper";
 
@@ -12,7 +12,7 @@ export function checkout(formData, errorHandler) {
   delete formData.lastName;
   delete formData.email;
 
-  const fetchUrl = `http://localhost:5000/api/checkout`;
+  const fetchUrl = `${apiServer}/api/checkout`;
 
   if (!guestCustomerId) {
     guestCustomerId = Date.now();
@@ -20,7 +20,7 @@ export function checkout(formData, errorHandler) {
   }
   const reqBody = {
     paymentMethod: "mollie",
-    returnUrl: "http://localhost:3000/checkout/return",
+    returnUrl: `${frontEndDomain}/checkout/return`,
     guestCustomerId: parseInt(guestCustomerId.slice(-9)),
     guestFirstName: guestFirstName,
     guestLastName: guestLastName,
@@ -41,7 +41,6 @@ export function checkout(formData, errorHandler) {
       deleteCookie("order");
 
       window.location.href = res.redirectUrl;
-      //setCookie("order", JSON.stringify(res.order));
     })
     .catch((err) => errorHandler(err));
 }

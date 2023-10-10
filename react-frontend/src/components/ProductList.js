@@ -3,6 +3,7 @@ import useApiFetch from "../hooks/useApiFetch";
 import { Link } from "react-router-dom";
 import cartIcon from "../assets/cart.svg";
 import { updateCart } from "../helpers/updateCartHelper";
+import { apiServer } from "../environmentVariables";
 
 export default function ProductList({
   categorySlug,
@@ -10,10 +11,10 @@ export default function ProductList({
   handleOrderContext,
 }) {
   const url = categorySlug
-    ? `http://localhost:5000/api/category/${categorySlug}?limit=20`
+    ? `${apiServer}/api/category/${categorySlug}?limit=20`
     : "";
   const options = { method: "GET" };
-  const [products, loading] = useApiFetch(url, options);
+  const [products, loading] = useApiFetch(url, options, errorHandler);
   const mouseEnter = (e) => {
     const button = e.currentTarget.querySelector(".product-card-add-to-cart");
     button.classList.remove("hidden");
@@ -27,6 +28,7 @@ export default function ProductList({
   const productList = products.products.map((product) => {
     return (
       <li
+        key={product.id}
         className="product-card-container"
         onMouseEnter={(e) => mouseEnter(e)}
         onMouseLeave={(e) => mouseLeave(e)}
@@ -34,13 +36,13 @@ export default function ProductList({
         <Link className="product-link" to={`/product/${product.slug}`}>
           <img
             className="product-card-image"
-            src={`http://localhost:5000/api/productImages/${
+            src={`${apiServer}/api/productImages/${
               product.ProductImages[0].path.split("/")[3]
             }`}
             alt={product.slug}
           />
           <span className="product-cart-title">{product.name}</span>
-          <span className="product-card-price">{product.price}</span>
+          <span className="product-card-price">{product.price}$</span>
         </Link>
         <button
           key={product.id}
