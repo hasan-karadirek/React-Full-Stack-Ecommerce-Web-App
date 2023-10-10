@@ -18,7 +18,7 @@
   flex-basis: 24%
 }
 .product-card-add-to-cart{
-  background-color: green;
+  background-color: #58ba54;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -26,6 +26,7 @@
   right: 20px;
   bottom: 10px;
   border: none;
+  
   
 }
 .product-link{
@@ -61,14 +62,33 @@
   width: 50%;
 }
 .product-info{
-  flex-direction: column;
+  padding-right: 2vw;
+  padding-left: 2vw;
   
 }
 .product-info>*{
+  margin-bottom: 6vh;
   width: 100%;
+
+}
+.product-detail-price{
+  font-size: 25px;
+  font-weight: 700;
+}
+.add-to-cart-button{
+  height: 40px;
+  border: none;
+  background-color: #58ba54;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.add-to-cart-button:hover{
+  background-color: #4a9e47;
 }
 .cart-product-image{
-  width: 120px;
+  width: 100px;
 }
 .cart-item{
   display: flex;
@@ -87,22 +107,58 @@
 }
 .cart-total{
   display: flex;
+  margin: top 50px;
 }
 .cart-total>*{
 margin: auto;
 
 }
-
-.cart-total-container>*{
-  
-  margin: auto;
+.cart-total-container{
+  margin-top: 10px;
 }
+
 .to-checkout-button-container{
   display:flex
 }
-.to-checkout-button{
+.to-checkout-link{
+  
   margin: auto;
   margin-top: 20px;
+}
+.to-checkout-button{
+  cursor: pointer;
+  margin-top:20px ;
+  font-size: 20px;
+  background-color: #58ba54;
+  border: none;
+  width: 50vw;
+  height: 40px;
+  font-weight: 800;
+}
+.to-checkout-button:hover{
+  background-color: #4a9e47;
+}
+.cart-nav{
+  display: flex;
+  margin-left: 45vw;
+ 
+}
+.cart-nav>*{
+  padding: 15px;
+  
+}
+.cart-update>button{
+  background-color: #d9d9d9;
+  margin-left: 10px;
+    margin-right: 10px;
+    width: 40px;
+
+}
+.cart-update>button:hover{
+  background-color: #9e9d9d;
+}
+.cart-nav-active{
+  text-decoration: black wavy underline;
 }
 
 .form-group{
@@ -190,4 +246,37 @@ margin: auto;
 .navbar-space{
   height: 75px;
   border-bottom: 1px solid #d9d9d9;
+}
+.info-icon{
+  width: 20px;
+  padding-top: 15px;
+  padding-right: 15px;
+}
+.info-label{
+  list-style: none;
+  margin-top: 5px;
+}
+.product-detail-banner-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto; 
+  
+}
+.product-detail-banner-image-box{
+  border: 1px solid #d9d9d9;
+  flex-basis: 30%;
+  align-items: center;
+  
+  
+
+}
+.product-detail-banner-image-box >p{
+  text-align: center;
+}
+.product-detail-banner-image-box >img{
+  margin-top: 10px;
+  margin-right:5vw ;
+  margin-left: 5vw;
 }

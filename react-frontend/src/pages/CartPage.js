@@ -41,31 +41,59 @@ export default function CartPage({ errorHandler }) {
                 />
               </div>
             </div>
-            <span className="cart-product-price">{product.price}</span>
+            <span className="cart-product-price">{product.price}$</span>
           </div>
         );
       })
     : [];
 
   return orderContext ? (
-    <div className="cart-items">
-      {cartItems.length === 0 ? (
-        <div className="cart-item">No product in the cart.</div>
-      ) : (
-        cartItems
-      )}
-      <div className="cart-total-container">
-        <div className="cart-total">
-          <span>Subtotal({`${totalQuantity} products`})</span>
-          <span>({`${orderContext.order_total}$`})</span>
+    <>
+      <div className="navbar-space"></div>
+      <div>
+        <div className="cart-nav">
+          <p
+            className={
+              window.location.pathname === "/cart" ? "cart-nav-active" : ""
+            }
+          >
+            Cart
+          </p>
+          <p
+            className={
+              window.location.pathname === "/checkout" ? "cart-nav-active" : ""
+            }
+          >
+            Address
+          </p>
+          <p
+            className={
+              window.location.pathname === "/payment" ? "cart-nav-active" : ""
+            }
+          >
+            Payment
+          </p>
         </div>
-        <div className="to-checkout-button-container">
-          <Link to="/checkout" className="to-checkout-button">
-            <button>Go to Checkout</button>
-          </Link>
+        <div className="cart-items">
+          {cartItems.length === 0 ? (
+            <div className="cart-item">No product in the cart.</div>
+          ) : (
+            cartItems
+          )}
+          <div className="cart-total-container">
+            <div className="cart-total">
+              <span>Total ({`${totalQuantity} products`})</span>
+              <span>({`${orderContext.order_total}$`})</span>
+            </div>
+            <div className="to-checkout-button-container">
+              <Link to="/checkout" className="to-checkout-link">
+                <button className="to-checkout-button">Go to Checkout</button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   ) : (
     <div className="cart-items">
       <div className="cart-item">no product in the cart</div>

@@ -3,6 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import useApiFetch from "../hooks/useApiFetch";
 import { OrderContext } from "../contexts/OrderContext";
 import UpdateCartButton from "../components/UpdateCartButton";
+import footIcon from "../assets/feature-reinforced-heel-and-toe.svg";
+import materialIcon from "../assets/material-combed-cotton.svg";
+import logo from "../assets/logo-hs.svg";
+import productDetailBannerBlue from "../assets/blue-smile.svg";
+import productDetailBannerPink from "../assets/pink-icon.svg";
+import productDetailBannerLightBlue from "../assets/light-blue-smile.svg";
 
 export default function ProductPage({ errorHandler }) {
   const { orderContext, handleOrderContext } = useContext(OrderContext);
@@ -12,6 +18,39 @@ export default function ProductPage({ errorHandler }) {
     : "";
 
   const [result, loading] = useApiFetch(url, null, errorHandler);
+
+  const productExtraInfo = (
+    <ul>
+      <li className="info-label">
+        <img className="info-icon" src={footIcon} alt="info" />{" "}
+        <span>Reinforced heel and toes</span>
+      </li>
+      <li className="info-label">
+        <img className="info-icon" src={materialIcon} alt="info" />{" "}
+        <span>Combed cotton</span>
+      </li>
+      <li className="info-label">
+        <img className="info-icon" src={logo} alt="info" />{" "}
+        <span>86% Cotton, 12% Polyamide, 2% Elastane</span>
+      </li>
+    </ul>
+  );
+  const productDetailBanner = (
+    <div className="product-detail-banner-container">
+      <div className="product-detail-banner-image-box">
+        <img src={productDetailBannerBlue} alt="product-detail-banner" />
+        <p>Unexpected designs</p>
+      </div>
+      <div className="product-detail-banner-image-box">
+        <img src={productDetailBannerPink} alt="product-detail-banner" />
+        <p>Made for everyone</p>
+      </div>
+      <div className="product-detail-banner-image-box">
+        <img src={productDetailBannerLightBlue} alt="product-detail-banner" />
+        <p>Good quality</p>
+      </div>
+    </div>
+  );
 
   const productImages = result.product ? (
     result.product.ProductImages.map((image) => {
@@ -43,7 +82,9 @@ export default function ProductPage({ errorHandler }) {
         <div className="product-detail-right">
           <div className="product-info">
             <h1>{result.product.name}</h1>
-            <span>{result.product.price}$</span>
+            <span className="product-detail-price">
+              {result.product.price}$
+            </span>
             <br></br>
             <UpdateCartButton
               handleOrderContext={handleOrderContext}
@@ -56,6 +97,8 @@ export default function ProductPage({ errorHandler }) {
               <h2>Description</h2>
               <p>{result.product.description}</p>
             </div>
+            {productExtraInfo}
+            {productDetailBanner}
           </div>
         </div>
       </div>
