@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import useApiFetch from "../hooks/useApiFetch";
 import { OrderContext } from "../contexts/OrderContext";
 import UpdateCartButton from "../components/UpdateCartButton";
@@ -9,27 +9,26 @@ import logo from "../assets/logo-hs.svg";
 import productDetailBannerBlue from "../assets/blue-smile.svg";
 import productDetailBannerPink from "../assets/pink-icon.svg";
 import productDetailBannerLightBlue from "../assets/light-blue-smile.svg";
+import { apiServer } from "../environmentVariables";
 
 export default function ProductPage({ errorHandler }) {
   const { orderContext, handleOrderContext } = useContext(OrderContext);
   const { productSlug } = useParams();
-  const url = productSlug
-    ? `http://localhost:5000/api/products/${productSlug}`
-    : "";
+  const url = productSlug ? `${apiServer}/api/products/${productSlug}` : "";
 
   const [result, loading] = useApiFetch(url, null, errorHandler);
 
   const productExtraInfo = (
     <ul>
-      <li className="info-label">
+      <li key="extra-info-1" className="info-label">
         <img className="info-icon" src={footIcon} alt="info" />{" "}
         <span>Reinforced heel and toes</span>
       </li>
-      <li className="info-label">
+      <li key="extra-info-2" className="info-label">
         <img className="info-icon" src={materialIcon} alt="info" />{" "}
         <span>Combed cotton</span>
       </li>
-      <li className="info-label">
+      <li key="extra-info-3" className="info-label">
         <img className="info-icon" src={logo} alt="info" />{" "}
         <span>86% Cotton, 12% Polyamide, 2% Elastane</span>
       </li>
@@ -57,7 +56,7 @@ export default function ProductPage({ errorHandler }) {
       return (
         <img
           className="product-detail-image"
-          src={`http://localhost:5000/api/productImages/${
+          src={`${apiServer}/api/productImages/${
             result.product.ProductImages[
               result.product.ProductImages.indexOf(image)
             ].path.split("/")[3]

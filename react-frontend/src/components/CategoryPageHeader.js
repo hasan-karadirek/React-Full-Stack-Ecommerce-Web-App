@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { getCookie } from "../helpers/cookiesHelpers";
 import { CategoryContext } from "../contexts/CategoryContext";
 
 export default function CategoryPageHeader({ categorySlug }) {
@@ -17,7 +16,7 @@ export default function CategoryPageHeader({ categorySlug }) {
         <img
           className="category-page-header-image"
           src="https://a.storyblok.com/f/54304/1440x960/3b8613098c/fw23-brand-launch-720x480_0005_listing-page-hero-adult.jpg/m/1440x0/filters:quality(60)"
-          alt="category-header-image"
+          alt="category-header"
         />
       </div>
     </div>

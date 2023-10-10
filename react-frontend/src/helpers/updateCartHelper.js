@@ -1,3 +1,4 @@
+import { apiServer } from "../environmentVariables";
 import { getCookie, setCookie } from "./cookiesHelpers";
 import { fetchApi } from "./fetchHelper";
 
@@ -8,7 +9,7 @@ export function updateCart(
   errorHandler
 ) {
   let guestCustomerId = getCookie("guestCustomerId");
-  const fetchUrl = `http://localhost:5000/api/cart/${action}`;
+  const fetchUrl = `${apiServer}/api/cart/${action}`;
 
   if (!guestCustomerId) {
     guestCustomerId = JSON.stringify(Date.now()).slice(-9);
