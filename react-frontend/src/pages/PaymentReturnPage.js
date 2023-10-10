@@ -3,6 +3,7 @@ import { deleteCookie, getCookie, setCookie } from "../helpers/cookiesHelpers";
 import { OrderContext } from "../contexts/OrderContext";
 import { fetchApi } from "../helpers/fetchHelper";
 import { OrderInProcessContext } from "../contexts/OrderInProcessContext";
+import loadingBar from "../assets/loading-svgrepo-com.svg";
 
 export default function PaymentReturnPage({ errorHandler }) {
   const { orderContext, handleOrderContext } = useContext(
@@ -50,15 +51,33 @@ export default function PaymentReturnPage({ errorHandler }) {
     : [];
 
   return (
-    <div className="cart-items">
-      {cartItems}
-      <div className="cart-total-container">
-        <div className="cart-total">
-          <span>Subtotal({`${totalQuantity} products`})</span>
-          <span>({`${orderContext.order_total}$`})</span>
-          <span> Payment {orderStatus}</span>
+    <>
+      <div className="navbar-space"></div>
+      <div className="order-detail">
+        <p>Thank you for your shopping...</p>
+        <p>{`Order Id: ${orderContext.id}`}</p>
+        <p>{orderContext.GuestCustomer.firstName}</p>
+        <p>{orderContext.GuestCustomer.lastName}</p>
+      </div>
+      <div className="cart-items">
+        {cartItems}
+        <div className="cart-total-container">
+          <div className="cart-total">
+            <span>Total ({`${totalQuantity} products`})</span>
+            <span>({`${orderContext.order_total}$`})</span>
+          </div>
+          <p className="payment-status">Payment status</p>
+          <br />
+          <p className="payment-status">
+            {" "}
+            {orderStatus === "pending" ? (
+              <img class="loading-bar" src={loadingBar} alt="loading-bar" />
+            ) : (
+              orderStatus
+            )}
+          </p>
         </div>
       </div>
-    </div>
+    </>
   );
 }

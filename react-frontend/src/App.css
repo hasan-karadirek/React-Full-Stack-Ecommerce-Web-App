@@ -306,3 +306,13 @@ margin: auto;
   margin-right:5vw ;
   margin-left: 5vw;
 }
+
+.payment-status{
+  margin: auto;
+text-align: center;}
+.order-detail>*{
+  margin-left: 20vw;
+}
+.loading-bar{
+  width: 50px;
+}
