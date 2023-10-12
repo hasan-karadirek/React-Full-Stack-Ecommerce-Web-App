@@ -23,7 +23,7 @@ function App() {
             !apiError ? (
               <CategoryContextProvider>
                 <OrderContextProvider>
-                  <Navbar />
+                  <Navbar errorHandler={errorHandler} />
                   <CategoryPage errorHandler={errorHandler} />
                 </OrderContextProvider>
               </CategoryContextProvider>
@@ -38,7 +38,7 @@ function App() {
             !apiError ? (
               <CategoryContextProvider>
                 <OrderContextProvider>
-                  <Navbar />
+                  <Navbar errorHandler={errorHandler} />
 
                   <ProductPage errorHandler={errorHandler} />
                 </OrderContextProvider>
@@ -54,7 +54,7 @@ function App() {
             !apiError ? (
               <CategoryContextProvider>
                 <OrderContextProvider>
-                  <Navbar />
+                  <Navbar errorHandler={errorHandler} />
 
                   <CartPage errorHandler={errorHandler} />
                 </OrderContextProvider>
@@ -70,7 +70,7 @@ function App() {
             !apiError ? (
               <CategoryContextProvider>
                 <OrderContextProvider>
-                  <Navbar />
+                  <Navbar errorHandler={errorHandler} />
 
                   <CheckoutPage errorHandler={errorHandler} />
                 </OrderContextProvider>
@@ -86,7 +86,7 @@ function App() {
             !apiError ? (
               <CategoryContextProvider>
                 <OrderInProcessContextProvider>
-                  <Navbar />
+                  <Navbar errorHandler={errorHandler} />
 
                   <PaymentReturnPage errorHandler={errorHandler} />
                 </OrderInProcessContextProvider>

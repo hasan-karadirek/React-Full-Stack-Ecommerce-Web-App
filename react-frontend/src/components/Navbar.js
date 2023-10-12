@@ -5,8 +5,9 @@ import cartIcon from "../assets/cart.svg";
 import { OrderContext } from "../contexts/OrderContext";
 import { setCookie } from "../helpers/cookiesHelpers";
 import { CategoryContext } from "../contexts/CategoryContext";
+import { apiServer } from "../environmentVariables";
 
-export default function Navbar() {
+export default function Navbar({ errorHandler }) {
   const { orderContext, handleOrderContext } = useContext(OrderContext);
   const { categoryContext, handleCategoryContext } =
     useContext(CategoryContext);
@@ -16,7 +17,9 @@ export default function Navbar() {
       }, 0)
     : 0;
   const [result, loading] = useApiFetch(
-    "http://localhost:5000/api/category/all"
+    `${apiServer}/api/category/all`,
+    {},
+    errorHandler
   );
   const categoriesArr = result && result.categories ? result.categories : [];
   useEffect(() => {
