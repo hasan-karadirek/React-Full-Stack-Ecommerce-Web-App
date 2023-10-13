@@ -15,6 +15,7 @@ export default function PaymentReturnPage({ errorHandler }) {
     const intervalId = setInterval(() => {
       fetchApi(`${apiServer}/api/checkout/status/${orderContext.id}`)
         .then((res) => {
+          console.log(res);
           if (res.order_status === "closed") {
             setOrderStatus(res.payment_status);
             deleteCookie("orderInProcess");
