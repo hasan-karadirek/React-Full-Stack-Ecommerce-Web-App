@@ -25,7 +25,7 @@ export default function Navbar({ errorHandler }) {
   useEffect(() => {
     setCookie("categories", JSON.stringify(categoriesArr));
     handleCategoryContext();
-  }, []);
+  }, [categoriesArr]);
 
   const categoryList = categoriesArr
     ? categoriesArr.map((category) => {

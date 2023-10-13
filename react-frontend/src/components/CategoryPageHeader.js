@@ -5,7 +5,8 @@ export default function CategoryPageHeader({ categorySlug }) {
   const { categoryContext } = useContext(CategoryContext);
   const category = categoryContext
     ? categoryContext.filter((category) => category.slug === categorySlug)
-    : {};
+    : [];
+
   return (
     <div className="category-page-header">
       <div className="category-page-header-left">
